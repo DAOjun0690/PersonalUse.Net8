@@ -1,5 +1,6 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using BCVP.Net8.Common;
 using BCVP.Net8.Extension.ServiceExtensions;
 using BCVP.Net8.Extensions;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -33,6 +34,9 @@ namespace BCVP.Net8
             // ¨Ì¿àª`¤J
             //builder.Services.AddScoped(typeof(IBaseRepositroy<>),typeof(BaseRepositroy<>));
             //builder.Services.AddScoped(typeof(IBaseService<,>),typeof(BaseService<,>));
+
+            // appSetting³]©w
+            builder.Services.AddSingleton(new AppSettings(builder.Configuration));
 
 
              var app = builder.Build();

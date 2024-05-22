@@ -1,4 +1,5 @@
 using AutoMapper;
+using BCVP.Net8.Common;
 using BCVP.Net8.IService;
 using BCVP.Net8.Model;
 using BCVP.Net8.Service;
@@ -58,6 +59,14 @@ namespace BCVP.Net8.Controllers
             //var roleList2 = await _dataStaticService2.Query();
 
             var roleList = await _roleServiceObj.Query();
+            var redisEnable = AppSettings.app(new string[] { "Redis", "Enable" });
+            var redisConnectionString = AppSettings.GetValue("Redis:ConnectionString");
+
+            Console.WriteLine($"Enable: {redisEnable}");
+            Console.WriteLine($"redisConnectionString: {redisConnectionString}");
+
+
+            Console.WriteLine("api request end ...");
 
             return roleList;
         }
