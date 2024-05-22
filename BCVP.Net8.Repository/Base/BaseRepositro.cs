@@ -8,7 +8,7 @@ namespace BCVP.Net8.Repository
         public async Task<List<TEntity>> Query()
         {
             await Task.CompletedTask;
-            var data = "[{\"Id\":18,\"Name\":\"a,smnd,amsnd\"}]";
+            var data = "[{\"Id\":18,\"Name\":\"namenamwnamw\"}]";
 
             return JsonConvert.DeserializeObject<List<TEntity>>(data) ?? new List<TEntity>();
         }
