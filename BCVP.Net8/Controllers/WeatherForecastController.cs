@@ -1,9 +1,12 @@
 using AutoMapper;
 using BCVP.Net8.Common;
+using BCVP.Net8.Common.Option;
 using BCVP.Net8.IService;
 using BCVP.Net8.Model;
 using BCVP.Net8.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 namespace BCVP.Net8.Controllers
 {
@@ -19,6 +22,7 @@ namespace BCVP.Net8.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IBaseService<Role, RoleVo> _roleService;
         private readonly IServiceScopeFactory _scopeFactory;
+        private readonly IOptions<RedisOptions> _redisOptions;
 
         /// <summary>
         /// ÄÝ©Ê¨Ì¿àª`¤J
@@ -27,11 +31,14 @@ namespace BCVP.Net8.Controllers
 
         public WeatherForecastController(
             ILogger<WeatherForecastController> logger, 
-            IBaseService<Role, RoleVo> roleService, IServiceScopeFactory scopeFactory)
+            IBaseService<Role, RoleVo> roleService, 
+            IServiceScopeFactory scopeFactory,
+            IOptions<RedisOptions> redisOptions)
         {
             _logger = logger;
             _roleService = roleService;
             _scopeFactory = scopeFactory;
+            _redisOptions = redisOptions;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -65,6 +72,8 @@ namespace BCVP.Net8.Controllers
             Console.WriteLine($"Enable: {redisEnable}");
             Console.WriteLine($"redisConnectionString: {redisConnectionString}");
 
+            var redisOptions = _redisOptions.Value;
+            Console.WriteLine(JsonConvert.SerializeObject(redisOptions));
 
             Console.WriteLine("api request end ...");
 
