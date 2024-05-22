@@ -1,6 +1,9 @@
-using BCVP.Net8.IService;
-using BCVP.Net8.Repository;
-using BCVP.Net8.Service;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using BCVP.Net8.Extension;
+using BCVP.Net8.Extensions;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace BCVP.Net8
 {
@@ -9,9 +12,15 @@ namespace BCVP.Net8
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args); // 建立一個WEB APP
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                .ConfigureContainer<ContainerBuilder>(builder => {
+                    builder.RegisterModule<AutofacModuleRegister>();
+                    builder.RegisterModule<AutofacPropertityModuleReg>();
+                });
 
             // Add services to the container.
-
+            // 底下這行默認不開啟
+            builder.Services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -21,8 +30,10 @@ namespace BCVP.Net8
             builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
             AutoMapperConfig.RegisterMappings();
 
-            builder.Services.AddScoped(typeof(IBaseRepositroy<>),typeof(BaseRepositroy<>));
-            builder.Services.AddScoped(typeof(IBaseService<,>),typeof(BaseService<,>));
+            // 依賴注入
+            //builder.Services.AddScoped(typeof(IBaseRepositroy<>),typeof(BaseRepositroy<>));
+            //builder.Services.AddScoped(typeof(IBaseService<,>),typeof(BaseService<,>));
+
 
              var app = builder.Build();
 

@@ -20,6 +20,7 @@ namespace BCVP.Net8.Service
         public async Task<List<TVo>> Query()
         {
             var entities = await _baseRepositroy.Query();
+            Console.WriteLine($"_baseRepositroy 實例HashCode:  {_baseRepositroy.GetHashCode()}");
             var llout = _mapper.Map<List<TVo>>(entities);
             return llout;
         }
