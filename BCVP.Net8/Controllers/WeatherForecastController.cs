@@ -1,5 +1,6 @@
 using AutoMapper;
 using BCVP.Net8.Common;
+using BCVP.Net8.Common.Core;
 using BCVP.Net8.Common.Option;
 using BCVP.Net8.IService;
 using BCVP.Net8.Model;
@@ -65,18 +66,22 @@ namespace BCVP.Net8.Controllers
             //    scope.ServiceProvider.GetRequiredService<IBaseService<Role, RoleVo>>();
             //var roleList2 = await _dataStaticService2.Query();
 
-            var roleList = await _roleServiceObj.Query();
-            var redisEnable = AppSettings.app(new string[] { "Redis", "Enable" });
-            var redisConnectionString = AppSettings.GetValue("Redis:ConnectionString");
+            //var roleList = await _roleServiceObj.Query();
+            //var redisEnable = AppSettings.app(new string[] { "Redis", "Enable" });
+            //var redisConnectionString = AppSettings.GetValue("Redis:ConnectionString");
 
-            Console.WriteLine($"Enable: {redisEnable}");
-            Console.WriteLine($"redisConnectionString: {redisConnectionString}");
+            //Console.WriteLine($"Enable: {redisEnable}");
+            //Console.WriteLine($"redisConnectionString: {redisConnectionString}");
 
-            var redisOptions = _redisOptions.Value;
-            Console.WriteLine(JsonConvert.SerializeObject(redisOptions));
+            //var redisOptions = _redisOptions.Value;
+            //Console.WriteLine(JsonConvert.SerializeObject(redisOptions));
+
+            var roleServiceObjNew = App.GetService<IBaseService<Role, RoleVo>>(false);
+            var roleList = await roleServiceObjNew.Query();
+            var redisOptions = App.GetOptions<RedisOptions>();
+
 
             Console.WriteLine("api request end ...");
-
             return roleList;
         }
     }

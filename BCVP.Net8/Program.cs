@@ -6,6 +6,7 @@ using BCVP.Net8.Extensions;
 using BCVP.Net8.Common.Option.Core;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using BCVP.Net8.Common.Core;
 
 namespace BCVP.Net8
 {
@@ -21,9 +22,10 @@ namespace BCVP.Net8
                 })
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    hostingContext.Configuration.ConfigureApplication();
-                });
-
+                    hostingContext.Configuration.ConfigureApplication(); // 拿到 AppSetting
+                })
+                ;
+            builder.ConfigureApplication(); // 拿到 Web、Host、環境
             // Add services to the container.
             // 底下這行默認不開啟
             builder.Services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
@@ -48,6 +50,8 @@ namespace BCVP.Net8
 
 
              var app = builder.Build();
+            app.ConfigureApplication(); // 拿到 Service
+            app.UseApplicationSetup(); // 註冊 偵測應用程式是否啟動 的判斷點
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
