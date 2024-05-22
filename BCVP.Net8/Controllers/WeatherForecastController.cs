@@ -16,16 +16,14 @@ namespace BCVP.Net8.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        //private readonly IBaseService<Role, RoleVo> _roleService;
-        private readonly IMapper _mapper;
+        private readonly IBaseService<Role, RoleVo> _roleService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, 
-            //IBaseService<Role, RoleVo> roleService,
-            IMapper mapper)
+        public WeatherForecastController(
+            ILogger<WeatherForecastController> logger, 
+            IBaseService<Role, RoleVo> roleService)
         {
             _logger = logger;
-            //_roleService = roleService;
-            _mapper = mapper;
+            _roleService = roleService;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -35,12 +33,12 @@ namespace BCVP.Net8.Controllers
             //var userList = await userService.Query();
             //return userList;
 
-            var roleService = new BaseService<Role, RoleVo>(_mapper);
-            var roleList = await roleService.Query();
-            return roleList;
+            //var roleService = new BaseService<Role, RoleVo>(_mapper);
+            //var roleList = await roleService.Query();
+            //return roleList;
 
-            //var roleList2 = await _roleService.Query();
-            //return roleList2;
+            var roleList = await _roleService.Query();
+            return roleList;
         }
     }
 }

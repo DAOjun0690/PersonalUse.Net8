@@ -9,16 +9,17 @@ namespace BCVP.Net8.Service
         IBaseService<TEntity, TVo> where TEntity : class, new()
     {
         private readonly IMapper _mapper;
+        private readonly IBaseRepositroy<TEntity> _baseRepositroy;
 
-        public BaseService(IMapper mapper)
+        public BaseService(IMapper mapper, IBaseRepositroy<TEntity> baseRepositroy)
         {
             _mapper = mapper;
+            _baseRepositroy = baseRepositroy;
         }
 
         public async Task<List<TVo>> Query()
         {
-            var baseRepo = new BaseRepositroy<TEntity>();
-            var entities = await baseRepo.Query();
+            var entities = await _baseRepositroy.Query();
             var llout = _mapper.Map<List<TVo>>(entities);
             return llout;
         }

@@ -1,3 +1,6 @@
+using BCVP.Net8.IService;
+using BCVP.Net8.Repository;
+using BCVP.Net8.Service;
 
 namespace BCVP.Net8
 {
@@ -17,6 +20,9 @@ namespace BCVP.Net8
             // ¥[¤J AutoMapper
             builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
             AutoMapperConfig.RegisterMappings();
+
+            builder.Services.AddScoped(typeof(IBaseRepositroy<>),typeof(BaseRepositroy<>));
+            builder.Services.AddScoped(typeof(IBaseService<,>),typeof(BaseService<,>));
 
              var app = builder.Build();
 
