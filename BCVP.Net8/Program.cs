@@ -27,9 +27,9 @@ namespace BCVP.Net8
                 ;
             builder.ConfigureApplication(); // 拿到 Web、Host、環境
             // Add services to the container.
-            // 底下這行默認不開啟
-            builder.Services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
-            builder.Services.AddControllers();
+            //builder.Services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
+            builder.Services.AddControllers()
+                .AddControllersAsServices();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(); // OPEN API檔案
