@@ -1,6 +1,6 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using BCVP.Net8.Extension;
+using BCVP.Net8.Extension.ServiceExtensions;
 using BCVP.Net8.Extensions;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.DependencyInjection.Extensions;

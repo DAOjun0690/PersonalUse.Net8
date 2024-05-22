@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BCVP.Net8.Model;
 
-namespace BCVP.Net8.Extension
+namespace BCVP.Net8.Extension.ServiceExtensions
 {
     public class CustomProfile : Profile
     {
