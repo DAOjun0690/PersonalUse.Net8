@@ -1,4 +1,4 @@
-﻿using BCVP.Net8.Common.Core;
+using BCVP.Net8.Common.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;

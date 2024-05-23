@@ -1,4 +1,4 @@
-﻿namespace BCVP.Net8.Common
+namespace BCVP.Net8.Common
 {
     public class AOPLogInfo
     {

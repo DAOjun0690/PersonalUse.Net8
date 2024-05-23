@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 
 namespace BCVP.Net8.Extension.ServiceExtensions
 {

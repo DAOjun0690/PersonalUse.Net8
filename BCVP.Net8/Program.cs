@@ -14,7 +14,7 @@ namespace BCVP.Net8
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args); // «Ø¥ß¤@­ÓWEB APP
+            var builder = WebApplication.CreateBuilder(args); // å»ºç«‹ä¸€å€‹WEB APP
             builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureContainer<ContainerBuilder>(builder => {
                     builder.RegisterModule<AutofacModuleRegister>();
@@ -22,36 +22,36 @@ namespace BCVP.Net8
                 })
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    hostingContext.Configuration.ConfigureApplication(); // ®³¨ì AppSetting
+                    hostingContext.Configuration.ConfigureApplication(); // æ‹¿åˆ° AppSetting
                 })
                 ;
-            builder.ConfigureApplication(); // ®³¨ì Web¡BHost¡BÀô¹Ò
+            builder.ConfigureApplication(); // æ‹¿åˆ° Webã€Hostã€ç’°å¢ƒ
             // Add services to the container.
             //builder.Services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
             builder.Services.AddControllers()
                 .AddControllersAsServices();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(); // OPEN APIÀÉ®×
+            builder.Services.AddSwaggerGen(); // OPEN APIæª”æ¡ˆ
 
-            // ¥[¤J AutoMapper
+            // åŠ å…¥ AutoMapper
             builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
             AutoMapperConfig.RegisterMappings();
 
-            // ¨Ì¿àª`¤J
+            // ä¾è³´æ³¨å…¥
             //builder.Services.AddScoped(typeof(IBaseRepositroy<>),typeof(BaseRepositroy<>));
             //builder.Services.AddScoped(typeof(IBaseService<,>),typeof(BaseService<,>));
 
-            // appSetting³]©w
+            // appSettingè¨­å®š
             builder.Services.AddSingleton(new AppSettings(builder.Configuration));
-            //// »P¤W­±³]©wªº ConfigureAppConfiguration ·N«ä¬Û¦P
+            //// èˆ‡ä¸Šé¢è¨­å®šçš„ ConfigureAppConfiguration æ„æ€ç›¸åŒ
             //ConfigurableOptions.ConfigureApplication(builder.Configuration); 
             builder.Services.AddAllOptionRegister();
 
 
              var app = builder.Build();
-            app.ConfigureApplication(); // ®³¨ì Service
-            app.UseApplicationSetup(); // µù¥U °»´úÀ³¥Îµ{¦¡¬O§_±Ò°Ê ªº§PÂ_ÂI
+            app.ConfigureApplication(); // æ‹¿åˆ° Service
+            app.UseApplicationSetup(); // è¨»å†Š åµæ¸¬æ‡‰ç”¨ç¨‹å¼æ˜¯å¦å•Ÿå‹• çš„åˆ¤æ–·é»
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

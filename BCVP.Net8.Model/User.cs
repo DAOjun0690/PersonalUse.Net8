@@ -1,4 +1,4 @@
-﻿namespace BCVP.Net8.Model
+namespace BCVP.Net8.Model
 {
     public class User
     {

@@ -26,7 +26,7 @@ namespace BCVP.Net8.Controllers
         private readonly IOptions<RedisOptions> _redisOptions;
 
         /// <summary>
-        /// �ݩʨ̿�`�J
+        /// 屬性依賴注入
         /// </summary>
         public IBaseService<Role, RoleVo> _roleServiceObj { get; set; }
 

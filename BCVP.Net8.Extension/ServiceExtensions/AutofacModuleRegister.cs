@@ -1,14 +1,9 @@
-﻿using Autofac;
+using Autofac;
 using Autofac.Extras.DynamicProxy;
 using BCVP.Net8.IService;
 using BCVP.Net8.Repository;
 using BCVP.Net8.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BCVP.Net8.Extension.ServiceExtensions
 {

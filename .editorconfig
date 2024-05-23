@@ -1,0 +1,6 @@
+# 如果要從更高的目錄繼承 .editorconfig 設定，請移除以下行
+root = true
+
+[*]
+charset = utf-8 # 使用 utf8 的編碼
+trim_trailing_whitespace = true # 儲存文件時移除每行末尾的空白字符

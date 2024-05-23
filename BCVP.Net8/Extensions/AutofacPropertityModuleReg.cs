@@ -1,4 +1,4 @@
-﻿using Autofac;
+using Autofac;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BCVP.Net8.Extensions

@@ -1,4 +1,4 @@
-﻿using BCVP.Net8.Common.Option;
+using BCVP.Net8.Common.Option;
 using BCVP.Net8.Common.Option.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -6,12 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BCVP.Net8.Common.Core
 {

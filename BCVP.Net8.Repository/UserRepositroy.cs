@@ -1,4 +1,4 @@
-﻿using BCVP.Net8.Model;
+using BCVP.Net8.Model;
 using Newtonsoft.Json;
 
 namespace BCVP.Net8.Repository
