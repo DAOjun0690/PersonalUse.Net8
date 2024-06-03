@@ -11,9 +11,10 @@ namespace BCVP.Net8.Extension.ServiceExtensions
         public CustomProfile()
         {
             CreateMap<Role, RoleVo>()
-                .ForMember(a => a.RoleName, b => b.MapFrom(c => c.Name));
-            CreateMap<RoleVo, Role>()
-                .ForMember(a => a.Name, b => b.MapFrom(c => c.RoleName));
+                .ForMember(a => a.RoleName, b => b.MapFrom(c => c.Name))
+                .ReverseMap();
+            //CreateMap<RoleVo, Role>()
+            //    .ForMember(a => a.Name, b => b.MapFrom(c => c.RoleName));
         }
     }
 }

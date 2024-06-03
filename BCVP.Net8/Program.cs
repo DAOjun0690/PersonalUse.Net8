@@ -48,8 +48,11 @@ namespace BCVP.Net8
             //ConfigurableOptions.ConfigureApplication(builder.Configuration); 
             builder.Services.AddAllOptionRegister();
 
+            // 快取
+            builder.Services.AddCacheSetUp();
 
-             var app = builder.Build();
+
+            var app = builder.Build();
             app.ConfigureApplication(); // 拿到 Service
             app.UseApplicationSetup(); // 註冊 偵測應用程式是否啟動 的判斷點
 
